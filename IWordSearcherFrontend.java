@@ -1,5 +1,3 @@
-import java.util.Collection;
-
 /**
  * Instances of classes that implement this interface can be used to drive a
  * console-based text user interface for the Eng Dictionary App.
@@ -21,11 +19,11 @@ public interface IWordSearcherFrontend {
 
     public void displayCommandMenu(); // prints command options to System.out
 
-    public void dictionary(Collection<IWord> Words); // displays a list of words
+    public void displayWord(IWord Word); // displays the word and its definition
 
     public void wordSearch(); // reads word from System.in, displays results
     
-    public void wordAdd(); // reads word from System.in, if the word is not in the dictionary, asks for a definition and adds it to the database
+    public void wordAdd(IWord Word, String definition); // reads word from System.in, if the word is not in the dictionary, asks for a definition and adds it to the database
     						//with the message [ATTENTION THIS WORD WAS ADDED BY A USER] attached to it
     
     public void about(); // prints info about the app
