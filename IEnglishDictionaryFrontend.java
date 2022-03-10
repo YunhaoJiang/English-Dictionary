@@ -2,7 +2,7 @@
  * Instances of classes that implement this interface can be used to drive a
  * console-based text user interface for the Eng Dictionary App.
  */
-public interface IWordSearcherFrontend {
+public interface IEnglishDictionaryFrontend {
 
     // constructor args (IWordSearcherBackend) reads input from System.in
     // constructor args (String, IWordSearcherBackend) reads input from String
