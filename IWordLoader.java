@@ -5,11 +5,11 @@ import java.io.FileNotFoundException;
  * Instances of classes that implement this interface can be used to load a list of shows from a
  * specified xml source file.
  * The following parts are used to load these show attributes:
- *        word: the original word
+ *        name: the original word
  *        lexical: part of the speech
  *        definition: the definition of the word
  */
-public interface WordLoader {
+public interface IWordLoader {
 
   /**
    * This method returns the list of words described in the xml file
