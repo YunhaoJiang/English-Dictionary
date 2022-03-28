@@ -1,9 +1,14 @@
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class WordLoader implements IWordLoader {
-  public List<IWord> dictionary;
+  protected List<IWord> dictionary;
+
+  public WordLoader() {
+    this.dictionary = new ArrayList<>();
+  }
 
   /**
    * This method returns the list of words described in the xml file
@@ -14,10 +19,11 @@ public class WordLoader implements IWordLoader {
    */
   @Override
   public List<IWord> loadWords(String filePath) throws FileNotFoundException {
-    dictionary = new ArrayList<>(55000);
+    dictionary = new ArrayList<>(35000);
     File dictFile = new File(filePath);
     BufferedReader reader = new BufferedReader(new FileReader(dictFile));
     addToDictionary(reader);
+    Collections.sort(dictionary);
     return dictionary;
   }
 
@@ -34,9 +40,7 @@ public class WordLoader implements IWordLoader {
         IWord toAdd = generateWordObject(reader);
         if (!isDuplicate(toAdd)) {
           dictionary.add(toAdd);
-        } else {
-          dictionary.add(mergeDuplicate(toAdd));
-        }
+       }
         nextLine = reader.readLine();
       }
     } catch (IOException e) {
@@ -44,7 +48,12 @@ public class WordLoader implements IWordLoader {
     }
   }
 
-  public IWord mergeDuplicate(IWord current) {
+  /**
+   * Unused
+   * @param current unused
+   * @return unused
+   */
+  protected IWord mergeDuplicate(IWord current) {
     Word lastWord = (Word) dictionary.remove(dictionary.size() - 1);
     String newDef;
     String newLex;
@@ -64,7 +73,7 @@ public class WordLoader implements IWordLoader {
     return result;
   }
 
-  public boolean isDuplicate(IWord current) {
+  protected boolean isDuplicate(IWord current) {
     try {
       IWord toCheck = dictionary.get(dictionary.size() - 1);
       if (toCheck.getWord().equals(current.getWord())) {
@@ -76,7 +85,7 @@ public class WordLoader implements IWordLoader {
     return false;
   }
 
-  private Word generateWordObject(BufferedReader reader) throws IOException {
+  protected Word generateWordObject(BufferedReader reader) throws IOException {
     String wordLine = replaceEscapedChar(reader.readLine());
     String lexLine = replaceEscapedChar(reader.readLine());
     String defLine = replaceEscapedChar(reader.readLine());
@@ -95,7 +104,7 @@ public class WordLoader implements IWordLoader {
   }
 
 
-  private String replaceEscapedChar(String target) {
+  protected String replaceEscapedChar(String target) {
     target = target.replace("&amp;", "&");
     target = target.replace("&lt;", "<");
     target = target.replace("&gt;", ">");
