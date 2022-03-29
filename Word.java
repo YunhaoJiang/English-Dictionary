@@ -3,14 +3,12 @@ public class Word implements IWord{
   final private String definition;
   final private String lexicalCategory;
   final private boolean userGenerated;
-  private int wordContained;
 
   public Word(String word, String definition, String lexicalCategory, boolean userGenerated) {
     this.word = word;
     this.definition = definition;
     this.lexicalCategory = lexicalCategory;
     this.userGenerated = userGenerated;
-    this.wordContained = 1;
   }
 
   @Override
@@ -38,13 +36,5 @@ public class Word implements IWord{
     if (this.getWord().compareTo(o.getWord())>0) return 1;
     else if (this.getWord().compareTo(o.getWord())<0) return -1;
     return 0;
-  }
-
-  public int getWordContained() {
-    return wordContained;
-  }
-
-  public void setWordContained(int count) {
-    this.wordContained = count;
   }
 }

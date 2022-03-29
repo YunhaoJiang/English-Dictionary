@@ -1,6 +1,5 @@
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class WordLoader implements IWordLoader {
@@ -23,7 +22,6 @@ public class WordLoader implements IWordLoader {
     File dictFile = new File(filePath);
     BufferedReader reader = new BufferedReader(new FileReader(dictFile));
     addToDictionary(reader);
-    Collections.sort(dictionary);
     return dictionary;
   }
 
@@ -40,37 +38,12 @@ public class WordLoader implements IWordLoader {
         IWord toAdd = generateWordObject(reader);
         if (!isDuplicate(toAdd)) {
           dictionary.add(toAdd);
-       }
+        }
         nextLine = reader.readLine();
       }
     } catch (IOException e) {
       e.printStackTrace();
     }
-  }
-
-  /**
-   * Unused
-   * @param current unused
-   * @return unused
-   */
-  protected IWord mergeDuplicate(IWord current) {
-    Word lastWord = (Word) dictionary.remove(dictionary.size() - 1);
-    String newDef;
-    String newLex;
-    int newWordContained = lastWord.getWordContained() + 1;
-    if (lastWord.getWordContained() == 1) {
-      newDef = "1. " + lastWord.getDefinition() + "\n2. " + current.getDefinition();
-      newLex = "1. " + lastWord.getLexicalCategory() + " 2. " + current.getLexicalCategory();
-    } else {
-      newDef = lastWord.getDefinition() + "\n" + newWordContained + ". " + current.getDefinition();
-      newLex = lastWord.getLexicalCategory() + " " + newWordContained + ". "
-          + current.getLexicalCategory();
-    }
-
-    Word result = new Word(current.getWord(), newDef, newLex, false);
-    result.setWordContained(newWordContained);
-
-    return result;
   }
 
   protected boolean isDuplicate(IWord current) {
@@ -112,4 +85,24 @@ public class WordLoader implements IWordLoader {
     target = target.replace("&apos;", "'");
     return target;
   }
+
+  /*protected IWord mergeDuplicate(IWord current) {
+    Word lastWord = (Word) dictionary.remove(dictionary.size() - 1);
+    String newDef;
+    String newLex;
+    int newWordContained = lastWord.getWordContained() + 1;
+    if (lastWord.getWordContained() == 1) {
+      newDef = "1. " + lastWord.getDefinition() + "\n2. " + current.getDefinition();
+      newLex = "1. " + lastWord.getLexicalCategory() + " 2. " + current.getLexicalCategory();
+    } else {
+      newDef = lastWord.getDefinition() + "\n" + newWordContained + ". " + current.getDefinition();
+      newLex = lastWord.getLexicalCategory() + " " + newWordContained + ". "
+          + current.getLexicalCategory();
+    }
+
+    Word result = new Word(current.getWord(), newDef, newLex, false);
+    result.setWordContained(newWordContained);
+
+    return result;
+  }*/
 }
