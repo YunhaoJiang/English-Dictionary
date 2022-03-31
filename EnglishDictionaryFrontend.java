@@ -59,13 +59,13 @@ public class EnglishDictionaryFrontend implements IEnglishDictionaryFrontend{
 
 	@Override
 	public void displayWords(List<IWord> Words) {
-		System.out.println("Found " + Words.size() + "/" + backend.getNumberOfWords() + " matches.");
+		System.out.println("Found " + Words.size() + " matches.");
 	    for (int i = 0; i < Words.size(); i++) {
 	      IWord current = Words.get(i);
-	      System.out.println(i + 1 + ". " + current.getWord() +  "   " + current.getLexicalCategory());
+	      System.out.println(i + 1 + ". " + current.getWord() +  "   " + "[" + current.getLexicalCategory() + "]");
 	      String warning = "";
 	      if(current.isUserGenerated()) warning = "[ATTENTION THIS WORD WAS ADDED BY A USER]";
-	      System.out.println("\tDefenitions: " + warning + "\n\t" + current.getDefinition());
+	      System.out.println("\tDefenitions: " + warning + "\n\t" + current.getDefinition() + "\n");
 	    }
 		
 	}
@@ -92,7 +92,7 @@ public class EnglishDictionaryFrontend implements IEnglishDictionaryFrontend{
 	    this.scnr.nextLine();
 	    IWord newWord = new Word(userWord, userDef, userLC, true); 
 	    boolean added = this.backend.addWords(newWord);
-	    if(added == true) System.out.println("\tThe Word “" + userWord + "” was added successfully.");
+	    if(added == true) System.out.println("\tThe Word “" + userWord + "” was added successfully.\n");
 	    else {
 	    	List<IWord> words = this.backend.searchByWord(userWord);
 	    	IWord word = null;
@@ -100,7 +100,7 @@ public class EnglishDictionaryFrontend implements IEnglishDictionaryFrontend{
 	    		if(words.get(i).getWord().toLowerCase().equals(userWord.toLowerCase())) word = words.get(i);}
 	  	      String warning = "";
 	  	      if(word.isUserGenerated()) warning = "[ATTENTION THIS WORD WAS ADDED BY A USER]";
-	    	System.out.println("\tTHE WORD ALREADY EXIST IN THE DICTIONARY:" + warning + "\n\t" + word.getDefinition());
+	    	System.out.println("\tTHE WORD ALREADY EXIST IN THE DICTIONARY:" + warning + "\n\t" + word.getDefinition() + "\n");
 	    	
 	    };
 		
@@ -109,9 +109,9 @@ public class EnglishDictionaryFrontend implements IEnglishDictionaryFrontend{
 	@Override
 	public void about() {
 		System.out.println("\tThe English Dictionary Project was implemented and created in group efforts by group BU-red." + 
-	"\tOur Team consisting of personA(data wrangler), personB(algorithm engineer), personC(backend developer)," +
-				"\tand personC(frontend developer), has created an ever-growing app that provides Webster 1913 definition" + 
-	"\tfor more than 130,000 words.");		
+	"\n\tOur Team consisting of personA(data wrangler), personB(algorithm engineer), personC(backend developer)," +
+				"\n\tand personC(frontend developer), has created an ever-growing app that provides Webster 1913 definition" + 
+	"\n\tfor more than " + backend.getNumberOfWords() +" words.\n");		
 	}
 
 }
