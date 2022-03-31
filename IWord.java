@@ -4,7 +4,8 @@
  */
 public interface IWord extends Comparable<IWord> {
 
-  // constructor args (String word, String definition, boolean userGenerated)
+  // constructor args （String word, String definition, String lexicalCategory, boolean
+  // userGenerated) {
 
   String getWord(); // return the title of the word
   String getDefinition(); // return the definition of the word
