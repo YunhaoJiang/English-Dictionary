@@ -6,5 +6,5 @@ public interface IEnglishDictionaryBackend {
     public int getNumberOfWords(); // retrieve number of words in database
 
     // these methods can be used to look-up Words
-    public IWord searchByWord(String word);
+    public List<IWord> searchByWord(String word);
 }
