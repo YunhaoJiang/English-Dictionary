@@ -2,7 +2,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-class WordSearcherTreeTest {
+class AlgorithmEngineerTests {
 
   /**
    * TEST METHOD 1: ADDS THREE WORDS AND CHECKS THE POSITION AND DEFINITION OF ONE OF THE WORDS
@@ -132,3 +132,4 @@ class WordSearcherTreeTest {
     
   }
 }
+
