@@ -7,8 +7,9 @@ import java.util.List;
 
 class EnglishDictionaryBackendTest {
 
-    @Test
-    void addWords() {
+
+	@Test
+    void TestAddWords() {
 
         EnglishDictionaryBackend edb = new EnglishDictionaryBackend();
 
