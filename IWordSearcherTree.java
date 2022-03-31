@@ -13,11 +13,10 @@ public interface IWordSearcherTree<ObjectType extends Comparable<ObjectType>> ex
      * @param Definition definition to be updated to
      */
     public void updateDefinition(ObjectType Word, String Definition);
-
     /**
      * If the word that is being searched does not exist, then this method will run
      * and ask the user if they meant a similar word to what he/she was searching.
      * In our case, we would print the last visited node before reaching null.
      */
-    public void suggestWord();
+    public void suggestWord(ObjectType Word);
 }
