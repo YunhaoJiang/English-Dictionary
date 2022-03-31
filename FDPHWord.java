@@ -1,12 +1,12 @@
 
-public class WordPH implements IWord{
+public class FDPHWord implements IWord{
 	protected final String Title;
 	protected final String defs;
 	protected final String LexicalCat;
 	protected boolean usergenerated;
 
 	
-	public Word(String word, String definition, String LexicalCategory, boolean userGenerated) {
+	public FDPHWord(String word, String definition, String LexicalCategory, boolean userGenerated) {
 		this.Title=word;
 		this.defs=definition;
 		this.LexicalCat=LexicalCategory;
