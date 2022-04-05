@@ -9,7 +9,6 @@ import java.util.TreeMap;
 public class EnglishDictionaryBackend implements IEnglishDictionaryBackend {
 
 	TreeMap<String,List<IWord>> treeMap = new TreeMap<String,List<IWord>>();
-	RedBlackTree<IWord> rbt = new RedBlackTree<IWord>();
 
     public EnglishDictionaryBackend()
     {
