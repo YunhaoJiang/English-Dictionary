@@ -9,25 +9,30 @@ import java.util.TreeMap;
 public class EnglishDictionaryBackend implements IEnglishDictionaryBackend {
 
 	TreeMap<String,List<IWord>> treeMap = new TreeMap<String,List<IWord>>();
+	RedBlackTree<IWord> rbt = new RedBlackTree<IWord>();
 
     public EnglishDictionaryBackend()
     {
-    	
-    }
 
-    public void addWords(IWord word)
+    }
+    
+
+    public boolean addWords(IWord word)
     {
     	if ( treeMap.containsKey(word.getWord()) == true )
     	{
     		List<IWord> lstWord = treeMap.get(word.getWord());
     		lstWord.add(word);
+    		
     	}
     	else
     	{
     		List<IWord> lstWord2 = new ArrayList<IWord>();
     		lstWord2.add(word);
     		treeMap.put(word.getWord(), lstWord2);
+    		
     	}
+    	return true;
     }
 
 
