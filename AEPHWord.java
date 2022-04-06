@@ -1,19 +1,19 @@
 
-public class AEWord implements IWord{
+public class AEPHWord implements IWord{
 
   final private String word;
   private String def;
   private String lexCat;
   boolean userGen;
   
-  public AEWord(String word, String def, String lexCat, boolean userGen) {
+  public AEPHWord(String word, String def, String lexCat, boolean userGen) {
     this.word = word;
     this.def = def;
     this.lexCat = lexCat;
     this.userGen = userGen;
   }
   
-  protected AEWord(String word) {
+  protected AEPHWord(String word) {
     this.word = word;
     this.def = "";
     this.lexCat = "";
@@ -48,7 +48,12 @@ public class AEWord implements IWord{
   public void setDefinition(String def) {
     this.def = def;
   }
-  
+
+  @Override
+  public void setUserGenerated(boolean b) {
+    this.userGen = b;
+  }
+
   @Override
   public String toString() {
     return this.word;

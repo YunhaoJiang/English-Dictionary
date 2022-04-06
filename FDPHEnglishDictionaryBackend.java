@@ -41,4 +41,19 @@ public class FDPHEnglishDictionaryBackend implements IEnglishDictionaryBackend{
 		return result;
 	}
 
+	@Override
+	public boolean updateWord(String word, String definition) {
+		return false;
+	}
+
+	@Override
+	public IWord doYouMean(String word) {
+		return null;
+	}
+
+	@Override
+	public List<IWord> searchByStart(String start) {
+		return null;
+	}
+
 }

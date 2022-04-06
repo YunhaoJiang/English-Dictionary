@@ -47,4 +47,9 @@ public class FDPHWord implements IWord {
     this.defs = def;
   }
 
+  @Override
+  public void setUserGenerated(boolean b) {
+    this.usergenerated = b;
+  }
+
 }

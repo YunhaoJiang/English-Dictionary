@@ -524,13 +524,9 @@ public class RedBlackTree<T extends Comparable<T>> implements SortedCollectionIn
     return "level order: " + this.toLevelOrderString() + "\nin order: " + this.toInOrderString();
   }
 
-  public List<T> get(T data) {
+  public List<T> get(T data) throws NoSuchElementException {
     List<T> result = new ArrayList<>();
-    try {
       result.add(getHelper(this.root, data));
-    } catch (NoSuchElementException e) {
-      // do nothing
-    }
     return result;
   }
 

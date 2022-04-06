@@ -11,12 +11,12 @@ class AlgorithmEngineerTests {
  /* @Test
   void test1() {
     // Adds words "chagrin", "random", and "tomb" to the dictionary
-    AEWord chagrin = new AEWord("chagrin",
+    AEPHWord chagrin = new AEPHWord("chagrin",
         "A distress of mind caused by humiliation, disappointment, or failure.", "noun", false);
-    AEWord random =
-        new AEWord("random", "Lacking a definite plan, purpose, or pattern.", "adjective", false);
-    AEWord tomb = new AEWord("tomb", "An excavation in which a corpse is buried.", "noun", false);
-    WordSearcherTree<AEWord> tree = new WordSearcherTree<AEWord>();
+    AEPHWord random =
+        new AEPHWord("random", "Lacking a definite plan, purpose, or pattern.", "adjective", false);
+    AEPHWord tomb = new AEPHWord("tomb", "An excavation in which a corpse is buried.", "noun", false);
+    WordSearcherTree<AEPHWord> tree = new WordSearcherTree<AEPHWord>();
     tree.insert(chagrin);
     tree.insert(random);
     tree.insert(tomb);
@@ -24,7 +24,7 @@ class AlgorithmEngineerTests {
     Assertions.assertEquals("A distress of mind caused by humiliation, disappointment, or failure.",
         tree.root.leftChild.data.getDefinition());
     // Updates the definition of the "chagrin"
-    tree.updateDefinition(new AEWord("chagrin"), "NEW DEFINITION");
+    tree.updateDefinition(new AEPHWord("chagrin"), "NEW DEFINITION");
     // Checks the updated definition of the "chagrin"
     Assertions.assertEquals("NEW DEFINITION", tree.root.leftChild.data.getDefinition());
   }*/
@@ -38,28 +38,28 @@ class AlgorithmEngineerTests {
  /* @Test
   void test2() {
     // Adds words "chagrin", "random", and "tomb" to the dictionary
-    AEWord chagrin = new AEWord("chagrin",
+    AEPHWord chagrin = new AEPHWord("chagrin",
         "A distress of mind caused by humiliation, disappointment, or failure.", "noun", false);
-    AEWord random =
-        new AEWord("random", "Lacking a definite plan, purpose, or pattern.", "adjective", false);
-    AEWord tomb = new AEWord("tomb", "An excavation in which a corpse is buried.", "noun", false);
-    WordSearcherTree<AEWord> tree = new WordSearcherTree<AEWord>();
+    AEPHWord random =
+        new AEPHWord("random", "Lacking a definite plan, purpose, or pattern.", "adjective", false);
+    AEPHWord tomb = new AEPHWord("tomb", "An excavation in which a corpse is buried.", "noun", false);
+    WordSearcherTree<AEPHWord> tree = new WordSearcherTree<AEPHWord>();
     tree.insert(chagrin);
     tree.insert(random);
     tree.insert(tomb);
     // Since "tome" is not in the dictionary, should suggest "tomb"
-    Assertions.assertEquals(tomb, tree.suggestWordHelper(new AEWord("tome"), tree.root));
+    Assertions.assertEquals(tomb, tree.suggestWordHelper(new AEPHWord("tome"), tree.root));
     // Checks if the definition of tomb has been affected
     Assertions.assertEquals("An excavation in which a corpse is buried.",
         tree.root.rightChild.data.getDefinition());
     // Adds "tome" for real this time
-    AEWord tome = new AEWord("tome", "A large or scholarly book.", "noun", false);
+    AEPHWord tome = new AEPHWord("tome", "A large or scholarly book.", "noun", false);
     tree.insert(tome);
     // Checks the definition and position of the "tome"
     Assertions.assertEquals("A large or scholarly book.",
         tree.root.rightChild.rightChild.data.getDefinition());
     // Updates "tome"'s definition
-    tree.updateDefinition(new AEWord("tome"), "TEST");
+    tree.updateDefinition(new AEPHWord("tome"), "TEST");
     // Test to see if the new definition has been updated
     Assertions.assertEquals("TEST", tree.root.rightChild.rightChild.data.getDefinition());
   }*/
@@ -70,16 +70,16 @@ class AlgorithmEngineerTests {
    */
  /* @Test
   void test3() {
-    AEWord a = new AEWord("a");
-    AEWord b = new AEWord("b");
-    AEWord c = new AEWord("c");
-    AEWord d = new AEWord("d");
-    AEWord e = new AEWord("e");
-    AEWord f = new AEWord("f");
-    AEWord g = new AEWord("g");
-    AEWord h = new AEWord("h");
-    AEWord i = new AEWord("i");
-    WordSearcherTree<AEWord> tree = new WordSearcherTree<AEWord>();
+    AEPHWord a = new AEPHWord("a");
+    AEPHWord b = new AEPHWord("b");
+    AEPHWord c = new AEPHWord("c");
+    AEPHWord d = new AEPHWord("d");
+    AEPHWord e = new AEPHWord("e");
+    AEPHWord f = new AEPHWord("f");
+    AEPHWord g = new AEPHWord("g");
+    AEPHWord h = new AEPHWord("h");
+    AEPHWord i = new AEPHWord("i");
+    WordSearcherTree<AEPHWord> tree = new WordSearcherTree<AEPHWord>();
     tree.insert(a);
     tree.insert(b);
     tree.insert(c);
@@ -99,17 +99,17 @@ class AlgorithmEngineerTests {
    */
  /* @Test
   void test4() {
-    AEWord a = new AEWord("a");
-    AEWord f = new AEWord("f");
-    AEWord n = new AEWord("n");
-    AEWord w = new AEWord("w");
-    WordSearcherTree<AEWord> tree = new WordSearcherTree<AEWord>();
+    AEPHWord a = new AEPHWord("a");
+    AEPHWord f = new AEPHWord("f");
+    AEPHWord n = new AEPHWord("n");
+    AEPHWord w = new AEPHWord("w");
+    WordSearcherTree<AEPHWord> tree = new WordSearcherTree<AEPHWord>();
     tree.insert(a);
     tree.insert(f);
     tree.insert(n);
     tree.insert(w);
     // Expects the suggestion function to return the word that is closest to the inputted one
-    Assertions.assertEquals(n, tree.suggestWordHelper(new AEWord("m"), tree.root));
+    Assertions.assertEquals(n, tree.suggestWordHelper(new AEPHWord("m"), tree.root));
   }*/
   
   /**
@@ -118,12 +118,12 @@ class AlgorithmEngineerTests {
 /* @Test
  void test5(){
  // Adds words "chagrin", "random", and "tomb" to the dictionary
-    AEWord chagrin = new AEWord("chagrin",
+    AEPHWord chagrin = new AEPHWord("chagrin",
         "A distress of mind caused by humiliation, disappointment, or failure.", "noun", false);
-    AEWord random =
-        new AEWord("random", "Lacking a definite plan, purpose, or pattern.", "adjective", false);
-    AEWord tomb = new AEWord("tomb", "An excavation in which a corpse is buried.", "noun", false);
-    WordSearcherTree<AEWord> tree = new WordSearcherTree<AEWord>();
+    AEPHWord random =
+        new AEPHWord("random", "Lacking a definite plan, purpose, or pattern.", "adjective", false);
+    AEPHWord tomb = new AEPHWord("tomb", "An excavation in which a corpse is buried.", "noun", false);
+    WordSearcherTree<AEPHWord> tree = new WordSearcherTree<AEPHWord>();
     tree.insert(chagrin);
     tree.insert(random);
     tree.insert(tomb);

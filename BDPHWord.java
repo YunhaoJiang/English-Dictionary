@@ -4,6 +4,7 @@ public class BDPHWord implements IWord {
     private String word = "";
     private String definition = "";
     private String lexicalCategory = "";
+    private boolean isUserGenerated;
 
     @Override
     public int compareTo(IWord o) {
@@ -31,6 +32,11 @@ public class BDPHWord implements IWord {
     public void setDefinition(String _def)
     {
         this.definition = _def;
+    }
+
+    @Override
+    public void setUserGenerated(boolean b) {
+        this.isUserGenerated = b;
     }
 
     @Override

@@ -2,7 +2,7 @@ public class Word implements IWord{
 	final private String word;
 	private String definition;
 	final private String lexicalCategory;
-	final private boolean userGenerated;
+	private boolean userGenerated;
 
 	public Word(String word, String definition, String lexicalCategory, boolean userGenerated) {
 		this.word = word;
@@ -41,5 +41,18 @@ public class Word implements IWord{
 	@Override
 	public void setDefinition(String def) {
 		this.definition = def;
+	}
+
+	@Override
+	public void setUserGenerated(boolean b) {
+		this.userGenerated = b;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (o instanceof Word) {
+			return this.getWord().equals(((Word) o).getWord());
+		}
+		return false;
 	}
 }
