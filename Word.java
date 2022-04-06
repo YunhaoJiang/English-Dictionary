@@ -1,4 +1,5 @@
 
+<<<<<<< HEAD
 public class Word implements IWord {
 
 	private String word = "";
@@ -49,5 +50,4 @@ public class Word implements IWord {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
 }
