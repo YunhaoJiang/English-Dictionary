@@ -4,6 +4,9 @@
  *
  * @param <ObjectType>
  */
+import java.util.ArrayList;
+import java.util.List;
+
 public class WordSearcherTree<ObjectType> extends RedBlackTree<IWord>
     implements IWordSearcherTree<IWord> {
 
@@ -95,10 +98,12 @@ public class WordSearcherTree<ObjectType> extends RedBlackTree<IWord>
    * @param word word to look for
    * @return IWord object with the same name
    */
-  public IWord getWord(String word) {
+  public List<IWord> getWord(String word) {
     Word target = new Word(word);
     if(this.contains(target)) {
-      return getHelper(target, this.root);
+	List<IWord> result = new ArrayList<IWord>();
+	result.add(getHelper(target, this.root));
+	return result;
     }
     else {
       throw new NullPointerException(word + "is not in the dictionary");
