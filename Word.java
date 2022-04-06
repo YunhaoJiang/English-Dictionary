@@ -1,53 +1,40 @@
+public class Word implements IWord{
+	final private String word;
+	final private String definition;
+	final private String lexicalCategory;
+	final private boolean userGenerated;
 
-<<<<<<< HEAD
-public class Word implements IWord {
-
-	private String word = "";
-	private String definition = "";
-	private String lexicalCategory = "";
-	
-	@Override
-	public int compareTo(IWord o) {
-		// TODO Auto-generated method stub
-		return word.compareTo(o.getWord());
+	public Word(String word, String definition, String lexicalCategory, boolean userGenerated) {
+		this.word = word;
+		this.definition = definition;
+		this.lexicalCategory = lexicalCategory;
+		this.userGenerated = userGenerated;
 	}
 
 	@Override
 	public String getWord() {
-		// TODO Auto-generated method stub
-		return word;
-	}
-	
-	public void setWord(String _word)
-	{
-		this.word = _word;
+		return this.word;
 	}
 
 	@Override
 	public String getDefinition() {
-		// TODO Auto-generated method stub
-		return definition;
-	}
-	
-	public void setDefinition(String _def)
-	{
-		this.definition = _def;
+		return this.definition;
 	}
 
 	@Override
 	public String getLexicalCategory() {
-		// TODO Auto-generated method stub
-		return lexicalCategory;
-	}
-	
-	public void setLexicalCategory(String lexCate) {
-		// TODO Auto-generated method stub
-		lexicalCategory = lexCate;
+		return this.lexicalCategory;
 	}
 
 	@Override
 	public boolean isUserGenerated() {
-		// TODO Auto-generated method stub
-		return false;
+		return this.userGenerated;
+	}
+
+	@Override
+	public int compareTo(IWord o) {
+		if (this.getWord().compareTo(o.getWord())>0) return 1;
+		else if (this.getWord().compareTo(o.getWord())<0) return -1;
+		return 0;
 	}
 }
