@@ -96,7 +96,7 @@ public class WordSearcherTree<ObjectType> extends RedBlackTree<IWord>
    * @return IWord object with the same name
    */
   public IWord getWord(String word) {
-    Word target = new Word(word);
+    AEWord target = new AEWord(word);
     if(this.contains(target)) {
       return getHelper(target, this.root);
     }

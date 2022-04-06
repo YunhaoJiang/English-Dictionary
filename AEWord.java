@@ -1,19 +1,19 @@
 
-public class Word implements IWord{
+public class AEWord implements IWord{
 
   final private String word;
   private String def;
   private String lexCat;
   boolean userGen;
   
-  public Word(String word, String def, String lexCat, boolean userGen) {
+  public AEWord(String word, String def, String lexCat, boolean userGen) {
     this.word = word;
     this.def = def;
     this.lexCat = lexCat;
     this.userGen = userGen;
   }
   
-  public Word(String word) {
+  protected AEWord(String word) {
     this.word = word;
     this.def = "";
     this.lexCat = "";
