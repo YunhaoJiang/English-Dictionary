@@ -112,8 +112,8 @@ public class EnglishDictionaryFrontend implements IEnglishDictionaryFrontend{
 	    String userDef = this.scnr.nextLine();
 	    
 	    userWord = userWord.toLowerCase();
-	    String z = userWord.charAt(0) + "";
-	    userWord = z.toUpperCase() + userWord.substring(1);
+	   // String z = userWord.charAt(0) + ""; // Sangho Jeon
+	   // userWord = z.toUpperCase() + userWord.substring(1); // Sangho Jeon 
 	    IWord newWord = new FDPHWord(userWord, userDef, userLC, true); 
 	    boolean added = this.backend.addWords(newWord);
 	    if(added == true) System.out.println("\tThe Word “" + userWord + "” was added successfully.\n");
