@@ -1,3 +1,9 @@
+/**
+ * WordSeacherTree for Algorithm Engineer, has an updateDefinition, suggestWord function and a getWord function 
+ * @author Danny
+ *
+ * @param <ObjectType>
+ */
 public class WordSearcherTree<ObjectType> extends RedBlackTree<IWord>
     implements IWordSearcherTree<IWord> {
 
@@ -84,4 +90,36 @@ public class WordSearcherTree<ObjectType> extends RedBlackTree<IWord>
     }
   }
 
+  /**
+   * Returns the IWord object with the matching name as input. Throws NullPointerException if the word doesn't exist in the dictionary
+   * @param word word to look for
+   * @return IWord object with the same name
+   */
+  public IWord getWord(String word) {
+    Word target = new Word(word);
+    if(this.contains(target)) {
+      return getHelper(target, this.root);
+    }
+    else {
+      throw new NullPointerException(word + "is not in the dictionary");
+    }
+  }
+
+  /**
+   * Helper method that searches through the tree for the IWord, assumes the word is in the dictionary
+   * 
+   * @param word input word to search for
+   * @param currNode current node that is being checked
+   * @return the IWord object with the same name
+   */
+  protected IWord getHelper(IWord word, Node<IWord> currNode) {
+    int compare = word.compareTo(currNode.data);
+    if (compare < 0) {
+      return getHelper(word, currNode.leftChild);
+    } else if (compare > 0) {
+      return getHelper(word, currNode.rightChild);
+    } else {
+      return currNode.data;
+    }
+  }
 }
