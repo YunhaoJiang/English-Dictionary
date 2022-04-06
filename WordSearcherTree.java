@@ -17,7 +17,7 @@ public class WordSearcherTree<ObjectType> extends RedBlackTree<IWord>
    * @param Word       word whose definition will be updated
    * @param Definition definition to be updated to
    */
-  @Override
+/*  @Override
   public void updateDefinition(IWord word, String Definition) {
     if (this.contains(word)) {
       // null references will not be stored within this tree
@@ -27,7 +27,7 @@ public class WordSearcherTree<ObjectType> extends RedBlackTree<IWord>
     } else {
       suggestWord(word);
     }
-  }
+  }*/
 
   /**
    * Private helper method that searches through the tree and finds the specified word in the
@@ -38,7 +38,7 @@ public class WordSearcherTree<ObjectType> extends RedBlackTree<IWord>
    * @param currNode current node that is being checked (should initially be the root)
    * @param def      new definition
    */
-  protected void updateHelper(IWord word, Node<IWord> currNode, String def) {
+ /* protected void updateHelper(IWord word, Node<IWord> currNode, String def) {
     int compare = word.compareTo(currNode.data);
     if (compare < 0) {
       // go left in the tree
@@ -49,7 +49,7 @@ public class WordSearcherTree<ObjectType> extends RedBlackTree<IWord>
     } else {
       currNode.data.setDefinition(def);
     }
-  }
+  }*/
 
 
   /**
