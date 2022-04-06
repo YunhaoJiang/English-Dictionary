@@ -1,6 +1,6 @@
 public class Word implements IWord{
 	final private String word;
-	final private String definition;
+	private String definition;
 	final private String lexicalCategory;
 	final private boolean userGenerated;
 
@@ -36,5 +36,10 @@ public class Word implements IWord{
 		if (this.getWord().compareTo(o.getWord())>0) return 1;
 		else if (this.getWord().compareTo(o.getWord())<0) return -1;
 		return 0;
+	}
+
+	@Override
+	public void setDefinition(String def) {
+		this.definition = def;
 	}
 }
