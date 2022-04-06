@@ -17,6 +17,12 @@ public class EnglishDictionaryFrontend implements IEnglishDictionaryFrontend{
 	    this.scnr = new Scanner(System.in);
 	  }
 
+	
+	/**
+	   * This method drives the entire read, eval, print loop (repl) for the
+	   * Dictionary App. This loop will continue to run until the user
+	   * explicitly enters the quit command.
+	   */
 	@Override
 	public void runCommandLoop() {
 		System.out.println("Welcome to the English Dictionary App!");
@@ -41,6 +47,10 @@ public class EnglishDictionaryFrontend implements IEnglishDictionaryFrontend{
 		
 	}
 
+	
+	/**
+	   * This method display the options for the loop
+	   */
 	@Override
 	public void displayCommandMenu() {
 		System.out.println("Command Menu:");
@@ -52,6 +62,11 @@ public class EnglishDictionaryFrontend implements IEnglishDictionaryFrontend{
 		
 	}
 
+	/**
+	   * This method takes a list of words containing the searched key word and displays their
+	   * definition, lexical category and whether they are user generated
+	   * @param list of words
+	   */
 	@Override
 	public void displayWords(List<IWord> Words) {
 		System.out.println("Found " + Words.size() + " matches.");
@@ -67,6 +82,12 @@ public class EnglishDictionaryFrontend implements IEnglishDictionaryFrontend{
 		
 	}
 
+	/**
+	   * This method takes a user input and
+	   * looks for the words containing that
+	   * input then passes the list of words
+	   * to the display method
+	   */
 	@Override
 	public void wordSearch() {
 	    System.out.print("Write a word that you would like to search for: ");
@@ -76,6 +97,10 @@ public class EnglishDictionaryFrontend implements IEnglishDictionaryFrontend{
 	    this.displayWords(searchResult);		
 	}
 
+	/**
+	   * This method takes a word, its definition and
+	   * lexical category from the user and adds it to the dictionary
+	   */
 	@Override
 	public void wordAdd() {
 		System.out.print("Write the word that you would like to add: ");
@@ -105,6 +130,7 @@ public class EnglishDictionaryFrontend implements IEnglishDictionaryFrontend{
 		
 	}
 
+	//a simple summary of what the app does and it creators
 	@Override
 	public void about() {
 		System.out.println("\tThe English Dictionary Project was implemented and created in group efforts by group BU-red." + 
