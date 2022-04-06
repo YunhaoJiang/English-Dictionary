@@ -10,7 +10,7 @@ public class EnglishDictionaryApp {
         List<IWord> wordList = null;
 
         try{
-            wordList = loader.loadWords("C:\\Users\\David Jeon\\Desktop\\CS400_P02\\src\\main\\java\\dictionary.xml");
+            wordList = loader.loadWords("dictionary.xml");
         }catch (FileNotFoundException e) {
             System.out.println("Word Not Found");
             e.printStackTrace();
