@@ -45,7 +45,6 @@ public class AEWord implements IWord{
     return this.userGen;
   }
   
-  @Override
   public void setDefinition(String def) {
     this.def = def;
   }
