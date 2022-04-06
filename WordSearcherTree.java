@@ -1,12 +1,12 @@
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * WordSeacherTree for Algorithm Engineer, has an updateDefinition, suggestWord function and a getWord function 
  * @author Danny
  *
  * @param <ObjectType>
  */
-import java.util.ArrayList;
-import java.util.List;
-
 public class WordSearcherTree<ObjectType> extends RedBlackTree<IWord>
     implements IWordSearcherTree<IWord> {
 
@@ -101,9 +101,9 @@ public class WordSearcherTree<ObjectType> extends RedBlackTree<IWord>
   public List<IWord> getWord(String word) {
     AEWord target = new AEWord(word);
     if(this.contains(target)) {
-	List<IWord> result = new ArrayList<IWord>();
-	result.add(getHelper(target, this.root));
-	return result;
+      ArrayList<IWord> result = new ArrayList<IWord>();
+      result.add(getHelper(target, this.root));
+      return result;
     }
     else {
       throw new NullPointerException(word + "is not in the dictionary");
