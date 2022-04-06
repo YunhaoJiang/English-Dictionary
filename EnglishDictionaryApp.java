@@ -3,29 +3,29 @@ import java.util.Iterator;
 import java.util.List;
 
 public class EnglishDictionaryApp {
-	
+
 	public static void main(String[] args)
     {
-		WordLoader var1 = new WordLoader();
-        List<IWord> var2 = null;
+		WordLoader loader = new WordLoader();
+        List<IWord> wordList = null;
 
         try{
-            var2 = var1.loadWords("/home/sjeon36/Project2_BU_red");
-        }catch (FileNotFoundException var6) {
+            wordList = loader.loadWords("C:\\Users\\David Jeon\\Desktop\\CS400_P02\\src\\main\\java\\dictionary.xml");
+        }catch (FileNotFoundException e) {
             System.out.println("Word Not Found");
-            var6.printStackTrace();
+            e.printStackTrace();
         }
-       EnglishDictionaryBackend var3 = new EnglishDictionaryBackend();
-        Iterator var4 = var2.iterator();
+       EnglishDictionaryBackend backend = new EnglishDictionaryBackend();
+        Iterator iterator = wordList.iterator();
 
-        while(var4.hasNext()){
-            IWord var5 = (IWord)var4.next();
-            var3.addWords(var5);
+        while(iterator.hasNext()){
+            IWord next = (IWord)iterator.next();
+            backend.addWords(next);
         }
 
-        EnglishDictionaryFrontend var7 = new EnglishDictionaryFrontend(var3);
-        var7.runCommandLoop();
-        
+        EnglishDictionaryFrontend frontend = new EnglishDictionaryFrontend(backend);
+        frontend.runCommandLoop();
+
     }
 
 }
