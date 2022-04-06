@@ -1,8 +1,6 @@
-import java.util.ArrayList;
-import java.util.List;
-
 /**
- * WordSeacherTree for Algorithm Engineer, has an updateDefinition, suggestWord function and a getWord function 
+ * WordSearcherTree for Algorithm Engineer, has an updateDefinition, suggestWord function and a
+ * getWord function
  * @author Danny
  *
  * @param <ObjectType>
@@ -14,10 +12,10 @@ public class WordSearcherTree<ObjectType> extends RedBlackTree<IWord>
    * Method that updates or adds a new definition to a currently existing word. If the word does not
    * exist, then activate the word suggestion function and ask for the user to enter a new word.
    * 
-   * @param Word       word whose definition will be updated
+   * @param word       word whose definition will be updated
    * @param Definition definition to be updated to
    */
-/*  @Override
+  @Override
   public void updateDefinition(IWord word, String Definition) {
     if (this.contains(word)) {
       // null references will not be stored within this tree
@@ -27,7 +25,7 @@ public class WordSearcherTree<ObjectType> extends RedBlackTree<IWord>
     } else {
       suggestWord(word);
     }
-  }*/
+  }
 
   /**
    * Private helper method that searches through the tree and finds the specified word in the
@@ -38,7 +36,7 @@ public class WordSearcherTree<ObjectType> extends RedBlackTree<IWord>
    * @param currNode current node that is being checked (should initially be the root)
    * @param def      new definition
    */
- /* protected void updateHelper(IWord word, Node<IWord> currNode, String def) {
+  protected void updateHelper(IWord word, Node<IWord> currNode, String def) {
     int compare = word.compareTo(currNode.data);
     if (compare < 0) {
       // go left in the tree
@@ -49,7 +47,7 @@ public class WordSearcherTree<ObjectType> extends RedBlackTree<IWord>
     } else {
       currNode.data.setDefinition(def);
     }
-  }*/
+  }
 
 
   /**
@@ -90,41 +88,6 @@ public class WordSearcherTree<ObjectType> extends RedBlackTree<IWord>
       } else {
         return suggestWordHelper(word, currNode.rightChild);
       }
-    }
-  }
-
-  /**
-   * Returns the IWord object with the matching name as input. Throws NullPointerException if the word doesn't exist in the dictionary
-   * @param word word to look for
-   * @return IWord object with the same name
-   */
-  public List<IWord> getWord(String word) {
-    AEWord target = new AEWord(word);
-    if(this.contains(target)) {
-      ArrayList<IWord> result = new ArrayList<IWord>();
-      result.add(getHelper(target, this.root));
-      return result;
-    }
-    else {
-      throw new NullPointerException(word + "is not in the dictionary");
-    }
-  }
-
-  /**
-   * Helper method that searches through the tree for the IWord, assumes the word is in the dictionary
-   * 
-   * @param word input word to search for
-   * @param currNode current node that is being checked
-   * @return the IWord object with the same name
-   */
-  protected IWord getHelper(IWord word, Node<IWord> currNode) {
-    int compare = word.compareTo(currNode.data);
-    if (compare < 0) {
-      return getHelper(word, currNode.leftChild);
-    } else if (compare > 0) {
-      return getHelper(word, currNode.rightChild);
-    } else {
-      return currNode.data;
     }
   }
 }

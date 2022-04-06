@@ -5,10 +5,8 @@
 // Email: cjiang88@wisc.edu
 // Lecture #: 002
 
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.NoSuchElementException;
-import java.util.Stack;
+import java.util.*;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -526,89 +524,28 @@ public class RedBlackTree<T extends Comparable<T>> implements SortedCollectionIn
     return "level order: " + this.toLevelOrderString() + "\nin order: " + this.toInOrderString();
   }
 
-  /**
-   * Test method that tests the scenario where a case three causes further violations for the tree
-   * above. In this case, after inserting 8, case 3 is invoked but then causes an additional case 1
-   * to be invoked further up in the tree.
-   */
-  @Test
-  public void testEnforceRBTreePropertiesAfterInsert1() {
-    RedBlackTree<Integer> test = new RedBlackTree<Integer>();
-    // Inserts 1 to 8 into the RB Tree
-    for (int i = 1; i <= 8; i++) {
-      test.insert(i);
+  public List<T> get(T data) {
+    List<T> result = new ArrayList<>();
+    try {
+      result.add(getHelper(this.root, data));
+    } catch (NoSuchElementException e) {
+      // do nothing
     }
-    // Checks to see if the correct tree is outputed
-    Assertions.assertEquals("[ 4, 2, 6, 1, 3, 5, 7, 8 ]", test.toLevelOrderString());
+    return result;
   }
 
-  /**
-   * Test method that tests the case of the new node being on the same side of a black parent
-   * sibling.
-   */
-  @Test
-  public void testEnforceRBTreePropertiesAfterInsert2() {
-    RedBlackTree<Double> test = new RedBlackTree<Double>();
-    test.insert(2.0);
-    test.insert(3.0);
-    test.insert(2.5);
-    // Checks to see if the correct tree is outputed
-    Assertions.assertEquals("[ 2.5, 2.0, 3.0 ]", test.toLevelOrderString());
+  private T getHelper(Node<T> node, T data) throws NoSuchElementException {
+    if (node == null) {
+      throw new NoSuchElementException("Data not found");
+    }
+    if (node.data.compareTo(data) == 0) {
+      return node.data;
+    }
+    if (node.data.compareTo(data) > 0) {
+      return getHelper(node.leftChild, data);
+    } else {
+      return getHelper(node.rightChild, data);
+    }
   }
 
-  /**
-   * Test method that tests two cases, insert a new violation node that is has both a red parent and
-   * a red parent's sibling; also insert a new violation node on the opposite side of a null
-   * parent's sibling
-   */
-  @Test
-  public void testEnforceRBTreePropertiesAfterInsert3() {
-    RedBlackTree<Double> test = new RedBlackTree<Double>();
-    test.insert(2.0);
-    test.insert(3.0);
-    test.insert(2.5);
-    // inserts a red node under a red parent as well as a red parent's sibling.
-    test.insert(4.8);
-    System.out.println(test.toLevelOrderString());
-    
-    // tests the data value and color of each node
-    // root node (2.5 black)
-    Assertions.assertEquals(1, test.root.blackHeight);
-    Assertions.assertEquals(2.5, test.root.data);
-
-    // left child node (2.0 black)
-    Assertions.assertEquals(1, test.root.leftChild.blackHeight);
-    Assertions.assertEquals(2.0, test.root.leftChild.data);
-
-    // right child node (3.0 black)
-    Assertions.assertEquals(1, test.root.rightChild.blackHeight);
-    Assertions.assertEquals(3.0, test.root.rightChild.data);
-
-    // right child of right child node (4.8 red)
-    Assertions.assertEquals(0, test.root.rightChild.rightChild.blackHeight);
-    Assertions.assertEquals(4.8, test.root.rightChild.rightChild.data);
-
-    // inserts a red node under a red node but on the opposite side null parent's sibling.
-    test.insert(100.1);
-
-    // root node (2.5 black)
-    Assertions.assertEquals(1, test.root.blackHeight);
-    Assertions.assertEquals(2.5, test.root.data);
-
-    // left child node (2.0 black)
-    Assertions.assertEquals(1, test.root.leftChild.blackHeight);
-    Assertions.assertEquals(2.0, test.root.leftChild.data);
-
-    // right child node (4.8 black)
-    Assertions.assertEquals(1, test.root.rightChild.blackHeight);
-    Assertions.assertEquals(4.8, test.root.rightChild.data);
-
-    // right child of right child node (100.1 red)
-    Assertions.assertEquals(0, test.root.rightChild.rightChild.blackHeight);
-    Assertions.assertEquals(100.1, test.root.rightChild.rightChild.data);
-
-    // left child of right child node (3.0 red)
-    Assertions.assertEquals(0, test.root.rightChild.leftChild.blackHeight);
-    Assertions.assertEquals(3.0, test.root.rightChild.leftChild.data);
-  }
 }

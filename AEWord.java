@@ -44,7 +44,7 @@ public class AEWord implements IWord{
   public boolean isUserGenerated() {
     return this.userGen;
   }
-  
+
   public void setDefinition(String def) {
     this.def = def;
   }

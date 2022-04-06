@@ -1,25 +1,32 @@
 import java.util.List;
 
 public class EnglishDictionaryBackend implements IEnglishDictionaryBackend {
+	protected WordSearcherTree<IWord> dictionaryTree;
 
-  WordSearcherTree<IWord> searcherTree;
+	public EnglishDictionaryBackend() {
+		this.dictionaryTree = new WordSearcherTree<IWord>();
+	}
 
-  public EnglishDictionaryBackend() {
-    searcherTree = new WordSearcherTree<IWord>();
-  }
+	@Override
+	public boolean addWords(IWord word) {
+		try {
+			dictionaryTree.insert(word);
+		} catch (IllegalArgumentException e) {
+			System.out.println("Word already exists in the dictionary");
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+	}
 
+	@Override
+	public int getNumberOfWords() {
+		return dictionaryTree.size();
+	}
 
-  public boolean addWords(IWord word) {
-    return true;
-  }
-
-  public int getNumberOfWords() {
-    return searcherTree.size();
-  }
-
-  // these methods can be used to look-up Words
-  public List<IWord> searchByWord(String word) {
-
-    return searcherTree.getWord(word);
-  }
+	@Override
+	public List<IWord> searchByWord(String word) {
+		IWord searchWord = new Word(word, null, null, false);
+		return dictionaryTree.get(searchWord);
+	}
 }
