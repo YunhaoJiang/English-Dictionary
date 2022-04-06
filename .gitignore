@@ -1,4 +1,6 @@
-<<<<<<< HEAD
 /Project2_BU_red.iml
 /.idea/
 /out/
+*~
+*.class
+log
