@@ -24,7 +24,7 @@ public class EnglishDictionaryApp {
         }
 
         EnglishDictionaryFrontend var7 = new EnglishDictionaryFrontend(var3);
-        var7.runCommandLoop();
+        var7.runCommandLoop();//
         
     }
 
