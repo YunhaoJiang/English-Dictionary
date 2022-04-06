@@ -5,10 +5,8 @@
 // Email: cjiang88@wisc.edu
 // Lecture #: 002
 
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.NoSuchElementException;
-import java.util.Stack;
+import java.util.*;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -524,6 +522,30 @@ public class RedBlackTree<T extends Comparable<T>> implements SortedCollectionIn
   @Override
   public String toString() {
     return "level order: " + this.toLevelOrderString() + "\nin order: " + this.toInOrderString();
+  }
+
+  public List<T> search(T data) {
+    List<T> result = new ArrayList<>();
+    try {
+      result.add(searchHelper(this.root, data));
+    } catch (NoSuchElementException e) {
+      // do nothing
+    }
+    return result;
+  }
+
+  private T searchHelper (Node<T> node, T data) throws NoSuchElementException {
+    if (node == null) {
+      throw new NoSuchElementException("Data not found");
+    }
+    if (node.data.compareTo(data) == 0) {
+      return node.data;
+    }
+    if (node.data.compareTo(data) > 0) {
+      return searchHelper(node.leftChild, data);
+    } else {
+      return searchHelper(node.rightChild, data);
+    }
   }
 
   /**

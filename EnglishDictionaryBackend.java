@@ -1,58 +1,36 @@
-import java.util.ArrayList;
+
 import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
 
 
 
 
 public class EnglishDictionaryBackend implements IEnglishDictionaryBackend {
+	protected RedBlackTree<IWord> dictionaryTree;
 
-	TreeMap<String,List<IWord>> treeMap = new TreeMap<String,List<IWord>>();
+	public EnglishDictionaryBackend() {
+		this.dictionaryTree = new RedBlackTree<IWord>();
+	}
 
-    public EnglishDictionaryBackend()
-    {
+	@Override
+	public boolean addWords(IWord word) {
+		try {
+			dictionaryTree.insert(word);
+		} catch (IllegalArgumentException e) {
+			System.out.println("Word already exists in the dictionary");
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+	}
 
-    }
-    
+	@Override
+	public int getNumberOfWords() {
+		return dictionaryTree.size();
+	}
 
-    public boolean addWords(IWord word)
-    {
-    	if ( treeMap.containsKey(word.getWord()) == true )
-    	{
-    		List<IWord> lstWord = treeMap.get(word.getWord());
-    		lstWord.add(word);
-    		
-    	}
-    	else
-    	{
-    		List<IWord> lstWord2 = new ArrayList<IWord>();
-    		lstWord2.add(word);
-    		treeMap.put(word.getWord(), lstWord2);
-    		
-    	}
-    	return true;
-    }
-
-
-    public int getNumberOfWords() 
-    {
-    	int count = 0;
-    	for (Map.Entry<String, List<IWord>> entry : treeMap.entrySet())
-    		count += entry.getValue().size();
-    	
-    	
-        return count;
-    }
-
-    // these methods can be used to look-up Words
-    public List<IWord> searchByWord(String word){
-    	
-    	if ( treeMap.containsKey(word) == true )
-    	{
-    		return treeMap.get(word);
-    	}
-    	
-    	return null;
-    }
+	@Override
+	public List<IWord> searchByWord(String word) {
+		IWord searchWord = new Word(word, null, null, false);
+		return dictionaryTree.search(searchWord);
+	}
 }

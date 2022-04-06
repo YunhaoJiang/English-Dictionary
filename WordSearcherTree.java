@@ -14,7 +14,7 @@ public class WordSearcherTree<ObjectType> extends RedBlackTree<IWord>
    * Method that updates or adds a new definition to a currently existing word. If the word does not
    * exist, then activate the word suggestion function and ask for the user to enter a new word.
    * 
-   * @param Word       word whose definition will be updated
+   * @param word       word whose definition will be updated
    * @param Definition definition to be updated to
    */
   @Override
@@ -47,7 +47,7 @@ public class WordSearcherTree<ObjectType> extends RedBlackTree<IWord>
       // go right in the tree
       updateHelper(word, currNode.rightChild, def);
     } else {
-      currNode.data.setDefinition(def);
+      //currNode.data.setDefinition(def);
     }
   }
 

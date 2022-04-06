@@ -65,7 +65,7 @@ public class EnglishDictionaryFrontend implements IEnglishDictionaryFrontend{
 	/**
 	   * This method takes a list of words containing the searched key word and displays their
 	   * definition, lexical category and whether they are user generated
-	   * @param list of words
+	   * @param Words of words
 	   */
 	@Override
 	public void displayWords(List<IWord> Words) {
@@ -77,7 +77,7 @@ public class EnglishDictionaryFrontend implements IEnglishDictionaryFrontend{
 	      System.out.println(i + 1 + ". " + current.getWord() +  "   " + "[" + current.getLexicalCategory() + "]");
 	      String warning = "";
 	      if(current.isUserGenerated()) warning = "[ATTENTION THIS WORD WAS ADDED BY A USER]";
-	      System.out.println("\tDefenitions:   " + warning + "\n\t" + current.getDefinition() + "\n");
+	      System.out.println("\tDefinitions:   " + warning + "\n\t" + current.getDefinition() + "\n");
 	    }
 		
 	}
@@ -112,11 +112,11 @@ public class EnglishDictionaryFrontend implements IEnglishDictionaryFrontend{
 	    String userDef = this.scnr.nextLine();
 	    
 	    userWord = userWord.toLowerCase();
-	    String z = userWord.charAt(0) + "";
-	    userWord = z.toUpperCase() + userWord.substring(1);
-	    IWord newWord = new FDPHWord(userWord, userDef, userLC, true); 
+	    //String z = userWord.charAt(0) + "";
+	  //  userWord = z.toUpperCase() + userWord.substring(1);
+	    IWord newWord = new Word(userWord, userDef, userLC, true);
 	    boolean added = this.backend.addWords(newWord);
-	    if(added == true) System.out.println("\tThe Word “" + userWord + "” was added successfully.\n");
+	    if(added) System.out.println("\tThe Word “" + userWord + "” was added successfully.\n");
 	    else {
 	    	List<IWord> words = this.backend.searchByWord(userWord.toLowerCase());
 	    	IWord word = null;
