@@ -1,12 +1,12 @@
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public class EnglishDictionaryApp {
-	
-	public static void main(String[] args)
-    {
-		WordLoader var1 = new WordLoader();
+
+  public static void main(String[] args) {
+		/*WordLoader var1 = new WordLoader();
         List<IWord> var2 = null;
 
         try{
@@ -25,7 +25,21 @@ public class EnglishDictionaryApp {
 
         EnglishDictionaryFrontend var7 = new EnglishDictionaryFrontend(var3);
         var7.runCommandLoop();//
-        
+        */
+    WordLoader wordLoader = new WordLoader();
+    ArrayList<IWord> wordList = new ArrayList<>();
+    try {
+      wordList = (ArrayList<IWord>) wordLoader.loadWords("dictionary.xml");
+    } catch (FileNotFoundException e) {
+      System.out.println("Word Not Found");
+      e.printStackTrace();
     }
+    EnglishDictionaryBackend dictionaryBackend = new EnglishDictionaryBackend();
+    for (IWord word : wordList) {
+      dictionaryBackend.addWords(word);
+    }
+    EnglishDictionaryFrontend dictionaryFrontend = new EnglishDictionaryFrontend(dictionaryBackend);
+    dictionaryFrontend.runCommandLoop();
+  }
 
 }
