@@ -1,0 +1,53 @@
+Script started on Tue Mar 29 23:46:29 2022
+[1m[7m%[27m[1m[0m                                                                                                                                                                                     [0m[27m[24m[Jyunhao.jiang@Yunhaos-MacBook-Pro Project2_BU_red % [K[?2004hggit status[?2004l
+On branch DataWrangler
+Your branch is up to date with 'origin/DataWrangler'.
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	[31mlog[m
+
+nothing added to commit but untracked files present (use "git add" to track)
+[1m[7m%[27m[1m[0m                                                                                                                                                                                     [0m[27m[24m[Jyunhao.jiang@Yunhaos-MacBook-Pro Project2_BU_red % [K[?2004hgggit l   g git log -1[?2004l
+[?1h=[33mcommit f950b2e1679dc089a68a7fbe7e41c964dba37288[m[33m ([m[1;36mHEAD -> [m[1;32mDataWrangler[m[33m, [m[1;31morigin/DataWrangler[m[33m)[m[m
+Author: Yunhao Jiang <jiang297@wisc.edu>[m
+Date:   Tue Mar 29 23:44:17 2022 -0500[m
+[m
+    implement Makefile and DataWranglerTests[m
+[K[?1l>[1m[7m%[27m[1m[0m                                                                                                                                                                                     [0m[27m[24m[Jyunhao.jiang@Yunhaos-MacBook-Pro Project2_BU_red % [K[?2004hmmake clean[?2004l
+rm *.class
+rm: *.class: No such file or directory
+make: *** [clean] Error 1
+[1m[7m%[27m[1m[0m                                                                                                                                                                                     [0m[27m[24m[Jyunhao.jiang@Yunhaos-MacBook-Pro Project2_BU_red % [K[?2004hmmake runTests[?2004l
+javac -cp .:junit5.jar DataWranglerTests.java
+java -jar junit5.jar -cp . --scan-class-path -n DataWranglerTests
+
+Thanks for using JUnit! Support its development at https://junit.org/sponsoring
+
+[36m╷[0m
+[36m├─[0m [36mJUnit Jupiter[0m [32m✔[0m
+[36m│  └─[0m [36mDataWranglerTests[0m [32m✔[0m
+[36m│     ├─[0m [34mtest1()[0m [32m✔[0m
+[36m│     ├─[0m [34mtest2()[0m [32m✔[0m
+[36m│     ├─[0m [34mtest3()[0m [32m✔[0m
+[36m│     ├─[0m [34mtest4()[0m [32m✔[0m
+[36m│     └─[0m [34mtest5()[0m [32m✔[0m
+[36m└─[0m [36mJUnit Vintage[0m [32m✔[0m
+
+Test run finished after 209 ms
+[         3 containers found      ]
+[         0 containers skipped    ]
+[         3 containers started    ]
+[         0 containers aborted    ]
+[         3 containers successful ]
+[         0 containers failed     ]
+[         5 tests found           ]
+[         0 tests skipped         ]
+[         5 tests started         ]
+[         0 tests aborted         ]
+[         5 tests successful      ]
+[         0 tests failed          ]
+
+[1m[7m%[27m[1m[0m                                                                                                                                                                                     [0m[27m[24m[Jyunhao.jiang@Yunhaos-MacBook-Pro Project2_BU_red % [K[?2004heexit[?2004l
+
+Script done on Tue Mar 29 23:47:08 2022
