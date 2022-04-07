@@ -7,9 +7,6 @@
 
 import java.util.*;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
-
 /**
  * Red-Black Tree implementation with a Node inner class for representing the nodes of the tree.
  * This tree has its insert method implemented.
