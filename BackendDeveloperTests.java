@@ -148,7 +148,7 @@ class BackendDeveloperTests {
     }
 
     @Test
-    //additional test for AE
+    //additional test to check if my code work correctly with AE's code 
     void TestAlgorithmEngineer1() {
         WordSearcherTree tree = new WordSearcherTree();
         BDPHWord newWord = new BDPHWord();
@@ -163,7 +163,7 @@ class BackendDeveloperTests {
     }
 
     @Test
-        //additional test for AE
+        //additional test to check if my code work correctly with AE's code 
     void TestAlgorithmEngineer2() {
         WordSearcherTree tree = new WordSearcherTree();
         BDPHWord newWord = new BDPHWord();
