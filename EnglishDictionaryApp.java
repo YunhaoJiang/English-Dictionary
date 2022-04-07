@@ -1,3 +1,10 @@
+// --== CS400 Project two W4 ==--
+// Name: Sangho Jeon
+// Role: BackEnd Developer
+// CSL Username: sangho
+// Email: sjeon36@wisc.edu
+// Lecture #: 002 @1:00pm
+
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Iterator;

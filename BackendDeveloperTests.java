@@ -1,3 +1,10 @@
+// --== CS400 Project two W4 ==--
+// Name: Sangho Jeon
+// Role: BackEnd Developer
+// CSL Username: sangho
+// Email: sjeon36@wisc.edu
+// Lecture #: 002 @1:00pm
+
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -111,7 +118,7 @@ class BackendDeveloperTests {
     @Test
     // This test is to see if it returns new array list correctly when word that is not exist in the directory.
     // "aaaaa" is not in the edb, so it should return new Arraylist that user can add on it.
-    void searchByWord2() {
+    void TestSearchByWord2() {
 
         EnglishDictionaryBackend edb = new EnglishDictionaryBackend();
 
@@ -139,4 +146,57 @@ class BackendDeveloperTests {
 
 
     }
+
+    @Test
+    //additional test for AE
+    void TestAlgorithmEngineer1() {
+        WordSearcherTree tree = new WordSearcherTree();
+        BDPHWord newWord = new BDPHWord();
+        newWord.setWord("Jeon");
+        newWord.setDefinition("one of the last names in Korea");
+        newWord.setLexicalCategory("noun");
+        tree.insert(newWord);
+
+        assertEquals(1, tree.size(), 0);
+
+
+    }
+
+    @Test
+        //additional test for AE
+    void TestAlgorithmEngineer2() {
+        WordSearcherTree tree = new WordSearcherTree();
+        BDPHWord newWord = new BDPHWord();
+        newWord.setWord("NULL");
+        newWord.setDefinition("1");
+        newWord.setLexicalCategory("noun");
+        tree.insert(newWord);
+
+        tree.updateDefinition(newWord, "0");
+
+        assertEquals( "0", newWord.getDefinition());
+
+
+
+    }
+
+
+    @Test
+        // additional test for DW
+    void TestDataWangler1() {
+        Word word = new Word("Jeon", "lastname", "noun", true);
+        assertEquals("Jeon", word.getWord());
+        assertEquals("lastname", word.getDefinition());
+        assertEquals("noun", word.getLexicalCategory());
+
+    }
+    // additional test for DW
+    @Test
+    void TestDataWangler2() {
+        Word word = new Word("Jeon", "lastname", "noun", true);
+
+        assertEquals(true, word.isUserGenerated());
+
+    }
+
 }
