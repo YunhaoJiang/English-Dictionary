@@ -8,7 +8,7 @@ class AlgorithmEngineerTests {
    * TEST METHOD 1: ADDS THREE WORDS AND CHECKS THE POSITION AND DEFINITION OF ONE OF THE WORDS
    * (CHAGRIN), UPDATES THE DEFINITION AND CONFIRMS THAT THE DEFINITION HAS INDEED BEEN UPDATED
    */
- /* @Test
+ @Test
   void test1() {
     // Adds words "chagrin", "random", and "tomb" to the dictionary
     AEPHWord chagrin = new AEPHWord("chagrin",
@@ -27,7 +27,7 @@ class AlgorithmEngineerTests {
     tree.updateDefinition(new AEPHWord("chagrin"), "NEW DEFINITION");
     // Checks the updated definition of the "chagrin"
     Assertions.assertEquals("NEW DEFINITION", tree.root.leftChild.data.getDefinition());
-  }*/
+  }
 
   /**
    * TEST CASE 2: ADDS 4 WORDS TO THE DICTIONARY, BUT ALSO TRIES TO UPDATE THE DEFINITION FOR A WORD
@@ -35,7 +35,7 @@ class AlgorithmEngineerTests {
    * WORD THAT IS IN THE DICTIONARY WHICH IS 'tomb'. NEXT ADDS THE CHECKS THE DEFINTION OF 'tome',
    * UPDATES THE DEFINITION OF 'tome', AND CHECKS THE UPDATED DEFINITION ONE MORE TIME
    */
- /* @Test
+  @Test
   void test2() {
     // Adds words "chagrin", "random", and "tomb" to the dictionary
     AEPHWord chagrin = new AEPHWord("chagrin",
@@ -62,13 +62,13 @@ class AlgorithmEngineerTests {
     tree.updateDefinition(new AEPHWord("tome"), "TEST");
     // Test to see if the new definition has been updated
     Assertions.assertEquals("TEST", tree.root.rightChild.rightChild.data.getDefinition());
-  }*/
+  }
 
   /**
    * TEST METHOD 3: CREATES 9 WORDS WITH NO DEFINITION FROM 'a' TO 'i' AND CHECKS USING
    * toLevelOrderString() TO SEE IF THE TREE IS CORRECT
    */
- /* @Test
+  @Test
   void test3() {
     AEPHWord a = new AEPHWord("a");
     AEPHWord b = new AEPHWord("b");
@@ -90,14 +90,14 @@ class AlgorithmEngineerTests {
     tree.insert(h);
     tree.insert(i);
     Assertions.assertEquals("[ d, b, f, a, c, e, h, g, i ]", tree.toLevelOrderString());
-  }*/
+  }
 
   /**
    * TEST METHOD 4: ADDS 4 LETTERS TO THE DICTIONARY AND THEN USES THE suggestWordHelper() FUNCTION
    * TO FIND A SIMILAR WORD CLOSE TO THE INPUT, THE INPUT IN THIS CASE IS THE LETTER 'm', SHOULD
    * RETURN 'n' SINCE IT'S THE CLOSEST LETTER TO IT
    */
- /* @Test
+  @Test
   void test4() {
     AEPHWord a = new AEPHWord("a");
     AEPHWord f = new AEPHWord("f");
@@ -110,12 +110,12 @@ class AlgorithmEngineerTests {
     tree.insert(w);
     // Expects the suggestion function to return the word that is closest to the inputted one
     Assertions.assertEquals(n, tree.suggestWordHelper(new AEPHWord("m"), tree.root));
-  }*/
+  }
   
   /**
    * TEST METHOD 5 TRIES TO UPDATE THE DEFINITION OF A NULL WORD, SHOULD THROW A NullPointerException
    */
-/* @Test
+ @Test
  void test5(){
  // Adds words "chagrin", "random", and "tomb" to the dictionary
     AEPHWord chagrin = new AEPHWord("chagrin",
@@ -130,6 +130,6 @@ class AlgorithmEngineerTests {
     // Tests to see if the correct exception is thrown when trying to update the definition of a null word
     Assertions.assertThrows(NullPointerException.class, () -> tree.updateDefinition(null, "null definition"));
     
-  }*/
+  }
 }
 
